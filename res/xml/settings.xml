@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+ 	<PreferenceCategory android:title="@string/pref_notification" >
+ 	         <ListPreference
+ 	        android:defaultValue="1"
+            android:key="prefUpdateCheckFreq"
+            android:entries="@array/updateCheck"
+            android:summary="@string/pref_updatecheck_summary"
+            android:entryValues="@array/updateCheckValues"
+            android:title="@string/pref_updatecheck" />
+ 	         <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="prefCheckDev"
+            android:title="@string/pref_checkDev" >
+        </CheckBoxPreference>
+ 	</PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_update_setting" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefFlashGapps"
+            android:summary="@string/pref_gapps_summary"
+            android:title="@string/pref_gapps_title" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefKernelRestore"
+            android:summary="@string/pref_kernel_restore_summary"
+            android:title="@string/pref_kernel_restore" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefPrefsRestore"
+            android:summary="@string/pref_prefs_summary"
+            android:title="@string/pref_prefs_title" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefWipeCache"
+            android:title="@string/pref_WipeCache" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefWipeDalvik"
+            android:title="@string/pref_WipeDalvik" >
+        </CheckBoxPreference>
+    </PreferenceCategory>
+     
+    <PreferenceCategory android:title="@string/pref_backup_setting" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefBackup"
+            android:title="@string/pref_backup" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefBackupBoot"
+            android:title="@string/pref_backup_boot" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefBackupSystem"
+            android:title="@string/pref_backup_system" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefBackupData"
+            android:title="@string/pref_backup_data" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefBackupCompress"
+            android:summary="@string/pref_backup_compress_summary"
+            android:title="@string/pref_backup_compress_title" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefBackupMd5"
+            android:title="@string/pref_backup_md5" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="prefBackupDel"
+            android:title="@string/pref_BackupDel_title"
+            android:summary="@string/pref_BackupDel_summary" >
+        </CheckBoxPreference>
+     </PreferenceCategory>
+     
+    <PreferenceCategory android:title="@string/pref_debug" >
+            <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="prefDebugUpdate"
+            android:title="@string/pref_debug_update_title" 
+            android:summary="@string/pref_debug_update_summary">
+        </CheckBoxPreference>
+	</PreferenceCategory>
+</PreferenceScreen>

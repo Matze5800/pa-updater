@@ -1,0 +1,10 @@
+<resources>
+
+    <dimen name="activity_horizontal_margin">10dp</dimen>
+    <dimen name="activity_vertical_margin">5dp</dimen>
+    <dimen name="changelog_horizontal_margin">0dp</dimen>
+    <dimen name="changelog_vertical_margin">0dp</dimen>    
+    <dimen name="status_img_maxwidth">100dp</dimen>
+    <dimen name="status_textsize">25dp</dimen>
+
+</resources>

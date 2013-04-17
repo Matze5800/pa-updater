@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PA Updater</string>
+    <string name="action_settings">Settings</string>
+    <string name="CheckGooVersion">Checking goo.im version</string>
+    <string name="error">Error!</string>
+    <string name="img_descr_status">Current Status</string>
+    <string name="uptodate">You are up to date.</string>
+    <string name="update_available">Update available!</string>
+    <string name="check">Checking for updates</string>
+    <string name="update">Start Update</string>
+    <string name="changelog">View Changelog</string>
+    <string name="title_activity_changelog">View Changelog</string>
+    <string name="title_activity_download_req">Download Request</string>
+    <string name="title_activity_cancel">Cancel</string>
+    <string name="cancel">Do you want to cancel the update?</string>
+    <string name="cancel_yes">Yes, cancel it</string>
+    <string name="cancel_no">No, please continue</string>
+    <string name="title_activity_reboot">Reboot</string>
+    <string name="wait">Please wait</string>
+    <string name="action_refresh">Refresh</string>
+    
+	<string name="content_edit">Edit</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+ 
+    <string name="pref_notification">Notification Settings</string>
+    
+    <string name="pref_updatecheck">Update check frequency</string>
+    <string name="pref_updatecheck_summary">Set the update check frequency</string>
+    
+    <string name="pref_checkDev">Check dev folder</string>
+    
+    <string name="pref_update_setting">Update Settings</string>
+    
+    <string name="pref_gapps_title">Flash Gapps</string>
+    <string name="pref_gapps_summary">Enable automatic Gapps flashing</string>
+    
+    <string name="pref_kernel_restore">Restore Kernel</string>
+    <string name="pref_kernel_restore_summary">Enable automatic restore of the currently installed Kernel</string>
+     
+    <string name="pref_prefs_title">Restore PA prefs</string>
+    <string name="pref_prefs_summary">Enable automatic restore of current PA Preferences</string>
+    
+    <string name="pref_WipeCache">Wipe Cache</string>
+    
+    <string name="pref_WipeDalvik">Wipe Dalvik Cache</string>
+    
+    <string name="pref_backup_setting">Backup Settings</string>
+    
+    <string name="pref_backup">Create Backup</string>
+        
+    <string name="pref_backup_boot">Backup Boot</string>
+    
+    <string name="pref_backup_system">Backup System</string>
+    
+    <string name="pref_backup_data">Backup Data</string>
+    
+    <string name="pref_backup_compress_title">Enable Compression</string>
+    <string name="pref_backup_compress_summary">Reduces backup size but takes slightly longer</string>
+    
+    <string name="pref_backup_md5">Generate MD5sums</string>
+    
+    <string name="pref_BackupDel_title">Delete old backups</string>
+    <string name="pref_BackupDel_summary">Wipes /TWRP/BACKUPS on your sdcard</string>
+    
+    <string name="pref_debug">debug</string>
+    
+    <string name="pref_debug_update_title">Ignore Update Check</string>
+    <string name="pref_debug_update_summary">Enables Update functionality even if no new Version has been detected</string>
+</resources>
