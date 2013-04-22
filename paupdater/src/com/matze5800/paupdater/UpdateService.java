@@ -55,6 +55,16 @@ boolean flashGapps;
         case 0:	//First Start: Run DownloadReq for ROM
             prefs.edit().putBoolean("update_running", true).commit();
         	prefs.edit().putBoolean("rom_checked", false).commit();
+        	if(prefs.getBoolean("customZip", false)){
+        		prefs.edit().putBoolean("RomDownloaded", true).commit();
+    			prefs.edit().putBoolean("rom_checked", true).commit();
+    			if(flashGapps){
+    				RequestGappsDl();
+    			} else {
+    				prefs.edit().putBoolean("GappsDownloaded", true).commit();
+    				DownloadFinished();
+    			}
+        	}
         	File rom = new File(Environment.getExternalStorageDirectory()+"/pa_updater", "rom.zip");
         	if(rom.exists()){
         		Functions.Notify(this, "Found ROM, checking MD5...");

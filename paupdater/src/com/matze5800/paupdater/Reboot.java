@@ -7,6 +7,7 @@ import com.matze5800.paupdater.Shell.ShellException;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,7 +28,8 @@ Context context;
 	}
 
 	Thread myThread = new Thread(new Runnable() {
-	    @Override
+	    @SuppressLint("SdCardPath")
+		@Override
 	    public void run() {
 	    	//Get preferences
 	    	Boolean DelBackup = prefs.getBoolean("prefBackupDel", false);
@@ -42,6 +44,7 @@ Context context;
 	    	Boolean Gapps = prefs.getBoolean("prefFlashGapps", true);
 	    	Boolean Kernel = prefs.getBoolean("prefKernelRestore", true);
 	    	Boolean Prefs = prefs.getBoolean("prefPrefsRestore", true);
+	    	Boolean CustomZip = prefs.getBoolean("customZip", false);
 	    	
 	    	if(DelBackup) {
 	    		File dir = new File(Environment.getExternalStorageDirectory()+"/TWRP/BACKUPS");
@@ -62,7 +65,9 @@ Context context;
 			
 			try {			
 			if(DoBackup){Shell.sudo(backup+cmd);}
-			Shell.sudo("echo install /sdcard/pa_updater/rom.zip"+cmd);
+			if(CustomZip){
+				Shell.sudo("echo install "+prefs.getString("customZipPath", "/sdcard/pa_updater/rom.zip")+cmd);
+			} else {Shell.sudo("echo install /sdcard/pa_updater/rom.zip"+cmd);}
 			if(Gapps){Shell.sudo("echo install /sdcard/pa_updater/gapps.zip"+cmd);}
 			if(Kernel){Shell.sudo("echo install /sdcard/pa_updater/kernel.zip"+cmd);}
 			if(Prefs){Shell.sudo("echo install /sdcard/pa_updater/pref.zip"+cmd);}

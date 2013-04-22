@@ -1,5 +1,9 @@
 package com.matze5800.paupdater;
 
+import java.io.File;
+
+import com.matze5800.paupdater.FileDialog;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -8,6 +12,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
@@ -44,6 +49,7 @@ SharedPreferences prefs;
     	updateButton = (Button)findViewById(R.id.button1);
     	
     	prefs = PreferenceManager.getDefaultSharedPreferences(this);
+    	prefs.edit().putBoolean("customZip", false).commit();
     	if(prefs.getBoolean("update_running", false)){updateButton.setEnabled(false);}
     	device = Functions.detectDevice(context);
     	if(device.equals("unsupported")){finish();}
@@ -63,7 +69,6 @@ SharedPreferences prefs;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
- 
         case R.id.action_settings:
             Intent i = new Intent(this, UserSettingActivity.class);
             startActivity(i);
@@ -71,7 +76,21 @@ SharedPreferences prefs;
         case R.id.action_refresh:
         	refresh();
         	break;
-
+        case R.id.action_open:
+        	File mPath = new File(Environment.getExternalStorageDirectory() + "//DIR//");
+            FileDialog fileDialog = new FileDialog(this, mPath);
+            fileDialog.setFileEndsWith(".zip");
+            fileDialog.addFileListener(new FileDialog.FileSelectedListener() {
+                public void fileSelected(File file) {
+                	String path = file.toString();
+                    Log.i("CustomZip", "Selected file " + path);
+                    prefs.edit().putBoolean("customZip", true).commit();
+                    prefs.edit().putString("customZipPath", path).commit();
+                    updateButton.setEnabled(true);
+                }
+            });
+            fileDialog.showDialog();
+        	break;
         }
         return true;
     }
@@ -119,7 +138,9 @@ SharedPreferences prefs;
     	 AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(this);
 		 myAlertDialog.setTitle("Start Update?");
 		 StringBuilder sb = new StringBuilder();
-		 sb.append("I'm going to download this ROM:\n" + prefs.getString("gooFilename", "none"));
+		 if(prefs.getBoolean("customZip", false)){
+			 sb.append("I'm going to use this ROM:\n" + prefs.getString("customZipPath", "none"));}
+		 else {sb.append("I'm going to download this ROM:\n" + prefs.getString("gooFilename", "none"));}
 		 if(prefs.getBoolean("prefFlashGapps", true)){
 		 sb.append("\n\n");
 		 sb.append("And this Gapps Package:\n" + prefs.getString("gappsFilename", "none"));}

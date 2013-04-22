@@ -20,6 +20,7 @@
     <string name="title_activity_reboot">Reboot</string>
     <string name="wait">Please wait</string>
     <string name="action_refresh">Refresh</string>
+    <string name="action_open">Select custom ROM zip</string>
     
 	<string name="content_edit">Edit</string>
     <string name="menu_settings">Settings</string>
