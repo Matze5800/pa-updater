@@ -285,6 +285,24 @@ public class Functions {
 		return Dev;
     }
     
+    public static String getRomId(Context context)	{
+    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		Process proc;
+		BufferedReader reader;
+		String Rom = null;
+		try {
+		proc = Runtime.getRuntime().exec(new String[]{"/system/bin/getprop", "ro.goo.rom"});
+		reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+		Rom = reader.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if(Rom.equals(null)){Rom="Error parsing ro.goo.rom!";}
+		Log.i("Local Parser", "Rom: "+Rom);
+		prefs.edit().putString("Rom", Rom).commit();
+		return Rom;
+    }
+    
     public static int getLocalVersion(Context context)	{
     	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		Process proc;
@@ -314,28 +332,30 @@ public class Functions {
     }
     
     public static String CheckGoo(Context context)	{
+    	String Rom = getRomId(context);
     	String Dev = getDevId(context);
     	String device = detectDevice(context);
     	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    	Boolean CheckDev = prefs.getBoolean("prefCheckDev", false);
     	String result = null;
         try{
         	JSONArray files = null;
         	JSONObject json = null;
         	JSONObject e;
         	int item = 1;
-        	if (prefs.getBoolean("prefCheckDev", false) || Dev.equals("dsmitty166"))	{
-        		Log.i("Goo Parser", "Check dev folder enabled!");
-        		if (Dev.equals("dsmitty166"))	{
-        			json = JSONfunctions.getJSONfromURL("http://goo.im/json2&action=search&query=dsmitty166");
-        		} else {
-        			json = JSONfunctions.getJSONfromURL("http://goo.im/json2&action=search&query=pa_"+device);
-        		}
+        	
+        	if(Dev.equals("dsmitty166") || Dev.equals("fabi280")){CheckDev = false;}
+        	
+        	if (CheckDev)	{
+        		json = JSONfunctions.getJSONfromURL("http://goo.im/json2&action=search&query=pa_"+device);
         		if (json != null)	{
         		files = json.getJSONArray("search_result");
         		item = 0;
         	}} else {
-        		Log.i("Goo Parser", "Check dev folder disabled!");
-        		json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/paranoidandroid/roms/"+device);
+        		if(Dev.equals("dsmitty166") && Rom.equals("Zion")) {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/dsmitty166/Zion");}
+        		else if(Dev.equals("dsmitty166") && Rom.equals("paranoidandroid_nightly")) {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/NIGHTLIES/"+device);}
+        		else if(Dev.equals("fabi280") && Rom.equals("paranoidandroid_nightly") && device.equals("mako")) {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/fabi280/mako_pa_nightly");}
+        		else {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/paranoidandroid/roms/"+device);}
         		if (json != null)	{
         		files = json.getJSONArray("list");
         		String version;
