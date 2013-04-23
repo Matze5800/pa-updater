@@ -33,8 +33,6 @@
     
     <string name="pref_checkDev">Check dev folder</string>
     
-    <string name="pref_Nightly">Show Nightly Builds</string>
-    
     <string name="pref_update_setting">Update Settings</string>
     
     <string name="pref_gapps_title">Flash Gapps</string>

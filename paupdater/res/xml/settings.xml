@@ -13,11 +13,6 @@
             android:key="prefCheckDev"
             android:title="@string/pref_checkDev" >
             </CheckBoxPreference>
-             <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="prefNightly"
-            android:title="@string/pref_Nightly" >
-        	</CheckBoxPreference>
  	</PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_update_setting" >
         <CheckBoxPreference
