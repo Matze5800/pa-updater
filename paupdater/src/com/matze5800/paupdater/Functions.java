@@ -381,13 +381,17 @@ public class Functions {
         	e = files.getJSONObject(item);
         	result = e.getString("ro_version");
         	prefs.edit().putString("gooFilename", e.getString("filename")).commit();
-        	prefs.edit().putString("gooShortURL", e.getString("short_url")).commit();
+        	String url = "http://goo.im" + e.getString("path");
+        	Log.i("Goo Parser", "ROM URL: " + url);
+        	prefs.edit().putString("gooShortURL", url).commit();
         	prefs.edit().putString("rom_md5", e.getString("md5")).commit();
         	json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/paranoidandroid/roms/gapps");
         	files = json.getJSONArray("list");
         	item=0;
         	e = files.getJSONObject(item);
-        	prefs.edit().putString("gappsURL", e.getString("short_url")).commit();
+        	url = "http://goo.im" + e.getString("path");
+        	Log.i("Goo Parser", "GAPPS URL: " + url);
+        	prefs.edit().putString("gappsURL", url).commit();
         	prefs.edit().putString("gappsmd5", e.getString("md5")).commit();
         	prefs.edit().putString("gappsFilename", e.getString("filename")).commit();
         	} else {return "err";}
