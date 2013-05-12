@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
- 	<PreferenceCategory android:title="@string/pref_notification" >
- 	         <ListPreference
- 	        android:defaultValue="1"
-            android:key="prefUpdateCheckFreq"
+
+    <PreferenceCategory android:title="@string/pref_notification" >
+        <ListPreference
+            android:defaultValue="1"
             android:entries="@array/updateCheck"
-            android:summary="@string/pref_updatecheck_summary"
             android:entryValues="@array/updateCheckValues"
+            android:key="prefUpdateCheckFreq"
+            android:summary="@string/pref_updatecheck_summary"
             android:title="@string/pref_updatecheck" />
- 	         <CheckBoxPreference
+
+        <CheckBoxPreference
             android:defaultValue="false"
             android:key="prefCheckDev"
             android:title="@string/pref_checkDev" >
-            </CheckBoxPreference>
- 	</PreferenceCategory>
+        </CheckBoxPreference>
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_update_setting" >
         <CheckBoxPreference
             android:defaultValue="true"
@@ -44,7 +46,6 @@
             android:title="@string/pref_WipeDalvik" >
         </CheckBoxPreference>
     </PreferenceCategory>
-     
     <PreferenceCategory android:title="@string/pref_backup_setting" >
         <CheckBoxPreference
             android:defaultValue="true"
@@ -80,17 +81,18 @@
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="prefBackupDel"
-            android:title="@string/pref_BackupDel_title"
-            android:summary="@string/pref_BackupDel_summary" >
+            android:summary="@string/pref_BackupDel_summary"
+            android:title="@string/pref_BackupDel_title" >
         </CheckBoxPreference>
-     </PreferenceCategory>
-     
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_debug" >
-            <CheckBoxPreference
+        <CheckBoxPreference
             android:defaultValue="false"
             android:key="prefDebugUpdate"
-            android:title="@string/pref_debug_update_title" 
-            android:summary="@string/pref_debug_update_summary">
+            android:summary="@string/pref_debug_update_summary"
+            android:title="@string/pref_debug_update_title" >
         </CheckBoxPreference>
-	</PreferenceCategory>
+    </PreferenceCategory>
+    <PreferenceCategory android:layout="@layout/preferencefragment_credits" />
+
 </PreferenceScreen>
