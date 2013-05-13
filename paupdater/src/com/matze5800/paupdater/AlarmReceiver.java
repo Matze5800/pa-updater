@@ -42,7 +42,7 @@ public void onReceive(Context context, Intent intent) {
         
         @Override
         protected void onPostExecute(String result) {
-        	if (result == null) {
+        	if (result.equals("err")) {
         		Log.e("AlarmReceiver", "Unable to check for updates! No connection or goo down!");
         	}else{
         	int gooVer = Integer.valueOf(result);
@@ -65,7 +65,6 @@ public void onReceive(Context context, Intent intent) {
     			Log.e("Local Parser", "Error parsing local version!");
     			Log.e("Local Parser", e.toString());
     		}
-        	//localVer = 1; //debug
         	if (gooVer > localVer)	{
         		Log.i("AlarmReceiver", "Newer Version available! Show Notification!");
         		

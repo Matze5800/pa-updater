@@ -12,7 +12,7 @@ import com.matze5800.paupdater.fragments.UpdateFragment;
 
 public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 	
-	private final String[] titles = { "Update", "Changlog", "Preferences" };
+	private final String[] titles = { "Update", "Changelog", "Preferences" };
 
 	public AppSectionsPagerAdapter(FragmentManager fm) {
 		super(fm);
