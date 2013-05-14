@@ -11,6 +11,16 @@
     <string name="check">Checking for updates</string>
     <string name="update">Start Update</string>
     <string name="changelog">View Changelog</string>
+    <string name="update_dialog_title">Start Update?</string>
+    <string name="update_dialog_use_rom">I am going to use this ROM:\n</string>
+    <string name="update_dialog_download_rom">I am going to download this ROM:\n</string>
+    <string name="update_dialog_gapps">And this Gapps Package:\n</string>
+    <string name="update_dialog_do_it">Do it!</string>
+    <string name="update_dialog_cancel">Cancel</string>
+    <string name="update_dialog_no_wifi">You are not on WiFi!</string>
+    <string name="update_dialog_lot_traffic">Starting the update will cause lots of traffic!\n\nAre you sure that you want to start it?</string>
+    <string name="update_dialog_yes">Yes</string>
+    <string name="update_dialog_no">No</string>
     <string name="credits">Developed by Simon Matzeder and Parthipan Ramesh.</string>
     <string name="title_activity_changelog">View Changelog</string>
     <string name="title_activity_download_req">Download Request</string>
