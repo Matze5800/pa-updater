@@ -24,24 +24,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements
-		ActionBar.TabListener {
+public class MainActivity extends Activity implements ActionBar.TabListener {
 
 	AppSectionsPagerAdapter mAppSectionsPagerAdapter;
 	static Context context;
 	ViewPager mViewPager;
 	SharedPreferences prefs;
+	static String tab3;
 	String device;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		Set View
+		tab3 = getString(R.string.title_activity_settings);
+		// Set View
 		setContentView(R.layout.activity_main);
 		context = this;
-//		Get SharedPreferences
+		// Get SharedPreferences
 		prefs = PreferenceManager.getDefaultSharedPreferences(context);
-		
-//		ActionBar / PagerAdapter
+
+		// ActionBar / PagerAdapter
 		mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(
 				getFragmentManager());
 
@@ -64,15 +65,15 @@ public class MainActivity extends Activity implements
 					.setText(mAppSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
-		
-//		Finishes Activity if device is not supported
+
+		// Finishes Activity if device is not supported
 		device = Functions.detectDevice(context);
 		if (device.equals("unsupported")) {
 			finish();
 		}
 	}
 
-//	ActionBar
+	// ActionBar
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
@@ -104,8 +105,8 @@ public class MainActivity extends Activity implements
 		}
 		return true;
 	}
-	
-//	ActionBar TabListener
+
+	// ActionBar TabListener
 	@Override
 	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
 	}
@@ -119,7 +120,7 @@ public class MainActivity extends Activity implements
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 	}
 
-//	Gets Goo Version
+	// Gets Goo Version
 	public class GetGooVersion extends AsyncTask<Void, Void, String> {
 		@Override
 		protected String doInBackground(Void... noargs) {
@@ -168,25 +169,25 @@ public class MainActivity extends Activity implements
 		}
 	}
 
-//	UpdateButton
+	// UpdateButton
 	public void startUpdate(View view) {
 		AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(context);
-		myAlertDialog.setTitle("Start Update?");
+		myAlertDialog.setTitle(R.string.update_dialog_title);
 		StringBuilder sb = new StringBuilder();
 		if (prefs.getBoolean("customZip", false)) {
-			sb.append("I'm going to use this ROM:\n"
-					+ prefs.getString("customZipPath", "none"));
+			String s = getString(R.string.update_dialog_use_rom);
+			sb.append(s + prefs.getString("customZipPath", "none"));
 		} else {
-			sb.append("I'm going to download this ROM:\n"
-					+ prefs.getString("gooFilename", "none"));
+			String s = getString(R.string.update_dialog_download_rom);
+			sb.append(s + prefs.getString("gooFilename", "none"));
 		}
 		if (prefs.getBoolean("prefFlashGapps", true)) {
 			sb.append("\n\n");
-			sb.append("And this Gapps Package:\n"
-					+ prefs.getString("gappsFilename", "none"));
+			String s = getString(R.string.update_dialog_gapps);
+			sb.append(s + prefs.getString("gappsFilename", "none"));
 		}
 		myAlertDialog.setMessage(sb.toString());
-		myAlertDialog.setPositiveButton("Do it!",
+		myAlertDialog.setPositiveButton(R.string.update_dialog_do_it,
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface arg0, int arg1) {
 						if (Functions.WifiConnected(context)) {
@@ -195,10 +196,12 @@ public class MainActivity extends Activity implements
 						} else {
 							AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(
 									context);
-							myAlertDialog.setTitle("You are not on WiFi!");
 							myAlertDialog
-									.setMessage("Starting the update will cause lots of traffic!\n\nAre you sure that you want to start it?");
-							myAlertDialog.setPositiveButton("Yes",
+									.setTitle(R.string.update_dialog_no_wifi);
+							myAlertDialog
+									.setMessage(R.string.update_dialog_lot_traffic);
+							myAlertDialog.setPositiveButton(
+									R.string.update_dialog_yes,
 									new DialogInterface.OnClickListener() {
 										public void onClick(
 												DialogInterface arg0, int arg1) {
@@ -206,16 +209,17 @@ public class MainActivity extends Activity implements
 											finish();
 										}
 									});
-							myAlertDialog.setNegativeButton("No", null);
+							myAlertDialog.setNegativeButton(
+									R.string.update_dialog_no, null);
 							myAlertDialog.show();
 						}
 					}
 				});
-		myAlertDialog.setNegativeButton("Cancel", null);
+		myAlertDialog.setNegativeButton(R.string.update_dialog_cancel, null);
 		myAlertDialog.show();
 	}
-	
-//	StartUpdateService
+
+	// StartUpdateService
 	private void processStartService() {
 		Intent intent = new Intent(context.getApplicationContext(),
 				UpdateService.class);
@@ -225,7 +229,7 @@ public class MainActivity extends Activity implements
 		Shell.su();
 	}
 
-//	Refresh Button from ActionBar
+	// Refresh Button from ActionBar
 	public void refresh() {
 		@SuppressWarnings("unused")
 		boolean secondupdate = UpdateFragment.getSecondupdate();
@@ -238,8 +242,13 @@ public class MainActivity extends Activity implements
 		GooTask.execute();
 	}
 
-//	Get context from MainActivity for Fragments
+	// Get context from MainActivity for Fragments
 	public static Context getContext() {
 		return context;
+	}
+
+	// Localization
+	public static String getTab3() {
+		return tab3;
 	}
 }
