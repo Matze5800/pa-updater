@@ -84,9 +84,15 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.action_refresh:
+			mViewPager.setCurrentItem(0);
 			refresh();
 			break;
+		case R.id.action_flash_m:
+			Intent intent = new Intent(this, FlashCustomFiles.class);
+			startActivity(intent);
+			break;
 		case R.id.action_open:
+			mViewPager.setCurrentItem(0);
 			File mPath = new File(Environment.getExternalStorageDirectory()
 					+ "//DIR//");
 			FileDialog fileDialog = new FileDialog(this, mPath);

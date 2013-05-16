@@ -71,31 +71,28 @@ public class UpdateFragment extends Fragment {
 			if (!result.equals("err")) {
 				gooVer = Integer.valueOf(result);
 				Log.i("gooVer", "goo Version: " + gooVer);
-				UpdateFragment.getProgressStatus().setVisibility(8);
-				UpdateFragment.getImageStatus().setVisibility(0);
+				ProgressStatus.setVisibility(8);
+				ImageStatus.setVisibility(0);
 				if (prefs.getBoolean("prefDebugUpdate", false)) {
 					localVer = 1;
 				} // DEBUG
 				if (gooVer > localVer) {
-					UpdateFragment.getUpdateStatus().setText(
-							R.string.update_available);
+					UpdateStatus.setText(R.string.update_available);
 					if (!secondupdate) {
-						float newY = UpdateFragment.getImageStatus().getY() + 32;
-						float newX = UpdateFragment.getImageStatus().getX() + 10;
-						UpdateFragment.getImageStatus().setY(newY);
-						UpdateFragment.getImageStatus().setX(newX);
+						float newY = ImageStatus.getY() + 32;
+						float newX = ImageStatus.getX() + 10;
+						ImageStatus.setY(newY);
+						ImageStatus.setX(newX);
 					}
-					UpdateFragment.getImageStatus().setImageResource(
-							R.drawable.update);
-					UpdateFragment.getUpdateButton().setEnabled(true);
+					ImageStatus.setImageResource(R.drawable.update);
+					updateButton.setEnabled(true);
 				} else {
-					UpdateFragment.getUpdateStatus().setText(R.string.uptodate);
-					UpdateFragment.getImageStatus().setImageResource(
-							R.drawable.ok);
-					UpdateFragment.getUpdateButton().setEnabled(false);
+					UpdateStatus.setText(R.string.uptodate);
+					ImageStatus.setImageResource(R.drawable.ok);
+					updateButton.setEnabled(false);
 				}
 				if (prefs.getBoolean("update_running", false)) {
-					UpdateFragment.getUpdateButton().setEnabled(false);
+					updateButton.setEnabled(false);
 				}
 			} else {
 				Toast.makeText(context, "Sorry, goo.im seems to be down!",

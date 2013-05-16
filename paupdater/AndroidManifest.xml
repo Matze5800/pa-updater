@@ -30,6 +30,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FlashCustomFiles"
+            android:configChanges="orientation"
+            android:label="Flash Files"
+            android:screenOrientation="portrait" />
 
         <service android:name="com.matze5800.paupdater.UpdateService" >
         </service>

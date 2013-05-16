@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_add"
+        android:icon="@drawable/action_new"
+        android:orderInCategory="25"
+        android:showAsAction="always"
+        android:title="@string/action_flash"/>
+    <item
+        android:id="@+id/action_flash"
+        android:icon="@drawable/action_flash"
+        android:orderInCategory="50"
+        android:showAsAction="always"
+        android:title="@string/action_flash"/>
+
+</menu>
