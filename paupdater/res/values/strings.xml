@@ -11,6 +11,8 @@
     <string name="check">Checking for updates</string>
     <string name="update">Start Update</string>
     <string name="changelog">View Changelog</string>
+    <string name="flash_files">Flash Files</string>
+    <string name="no_files_to_flash">No files to flash!</string>
     <string name="update_dialog_title">Start Update?</string>
     <string name="update_dialog_use_rom">I am going to use this ROM:\n</string>
     <string name="update_dialog_download_rom">I am going to download this ROM:\n</string>
@@ -32,6 +34,8 @@
     <string name="wait">Please wait</string>
     <string name="action_refresh">Refresh</string>
     <string name="action_open">Select custom ROM zip</string>
+    <string name="action_add">Add file</string>
+    <string name="action_flash">Start flashing process</string>
     <string name="content_edit">Edit</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_settings">Settings</string>

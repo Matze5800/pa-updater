@@ -9,21 +9,21 @@
     tools:context=".Cancel" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/file4down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignRight="@+id/button2"
+        android:layout_alignLeft="@+id/file4up"
+        android:layout_alignRight="@+id/file4up"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="46dp"
         android:onClick="CancelUpdate"
         android:text="@string/cancel_yes" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/file4up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
+        android:layout_below="@+id/file4down"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="39dp"
         android:onClick="Continue"

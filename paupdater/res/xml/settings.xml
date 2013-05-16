@@ -54,32 +54,38 @@
         </CheckBoxPreference>
         <CheckBoxPreference
             android:defaultValue="true"
+            android:dependency="prefBackup"
             android:key="prefBackupBoot"
             android:title="@string/pref_backup_boot" >
         </CheckBoxPreference>
         <CheckBoxPreference
             android:defaultValue="true"
+            android:dependency="prefBackup"
             android:key="prefBackupSystem"
             android:title="@string/pref_backup_system" >
         </CheckBoxPreference>
         <CheckBoxPreference
             android:defaultValue="true"
+            android:dependency="prefBackup"
             android:key="prefBackupData"
             android:title="@string/pref_backup_data" >
         </CheckBoxPreference>
         <CheckBoxPreference
             android:defaultValue="true"
+            android:dependency="prefBackup"
             android:key="prefBackupCompress"
             android:summary="@string/pref_backup_compress_summary"
             android:title="@string/pref_backup_compress_title" >
         </CheckBoxPreference>
         <CheckBoxPreference
             android:defaultValue="true"
+            android:dependency="prefBackup"
             android:key="prefBackupMd5"
             android:title="@string/pref_backup_md5" >
         </CheckBoxPreference>
         <CheckBoxPreference
             android:defaultValue="false"
+            android:dependency="prefBackup"
             android:key="prefBackupDel"
             android:summary="@string/pref_BackupDel_summary"
             android:title="@string/pref_BackupDel_title" >

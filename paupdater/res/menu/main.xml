@@ -1,16 +1,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    
-        <item
+
+    <item
         android:id="@+id/action_refresh"
-        android:orderInCategory="50"
         android:icon="@drawable/action_refresh"
+        android:orderInCategory="75"
         android:showAsAction="always"
         android:title="@string/action_refresh"/>
-        
-        <item
+    <item
+        android:id="@+id/action_flash_m"
+        android:icon="@drawable/action_flash"
+        android:orderInCategory="50"
+        android:showAsAction="always"
+        android:title="@string/action_flash"/>
+    <item
         android:id="@+id/action_open"
-        android:orderInCategory="25"
         android:icon="@drawable/action_open"
+        android:orderInCategory="25"
         android:showAsAction="always"
         android:title="@string/action_open"/>
 
