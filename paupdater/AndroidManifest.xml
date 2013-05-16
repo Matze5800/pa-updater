@@ -11,17 +11,18 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:persistent="true">
+        android:persistent="true"
+        android:theme="@style/AppTheme" >
         <activity
             android:name="com.matze5800.paupdater.MainActivity"
-            android:configChanges="orientation|screenSize" 
+            android:configChanges="orientation|screenSize"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,9 +31,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.matze5800.paupdater.Changelog"
-            android:label="@string/title_activity_changelog" >
-        </activity>
+            android:name=".FlashCustomFiles"
+            android:configChanges="orientation"
+            android:label="@string/flash_files"
+            android:screenOrientation="portrait" />
 
         <service android:name="com.matze5800.paupdater.UpdateService" >
         </service>
@@ -44,27 +46,24 @@
         </activity>
         <activity
             android:name="com.matze5800.paupdater.Cancel"
-            android:label="@string/title_activity_cancel">
+            android:label="@string/title_activity_cancel" >
         </activity>
         <activity
             android:name="com.matze5800.paupdater.Reboot"
             android:label="@string/title_activity_reboot" >
         </activity>
-                <activity
-            android:name="com.matze5800.paupdater.UserSettingActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
-        <receiver android:name="AlarmReceiver">
-        <intent-filter>
-            <action android:name="com.matze5800.paupdater.ACTION"/>
-            <action android:name="com.matze5800.paupdater.ACTION2"/>
-        </intent-filter>
-    </receiver>
+
+        <receiver android:name="AlarmReceiver" >
+            <intent-filter>
+                <action android:name="com.matze5800.paupdater.ACTION" />
+                <action android:name="com.matze5800.paupdater.ACTION2" />
+            </intent-filter>
+        </receiver>
         <receiver android:name="BootSetter" >
-    <intent-filter>
-        <action
-            android:name="android.intent.action.BOOT_COMPLETED" />
-    </intent-filter>
-</receiver>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
+
 </manifest>

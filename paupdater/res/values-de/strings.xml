@@ -41,7 +41,7 @@
     <string name="pref_checkDev">Überprüfe dev Ordner</string>
     <string name="pref_update_setting">Update Einstellungen</string>
     <string name="pref_gapps_title">Gapps flashen</string>
-    <string name="pref_gapps_summary">Aktiviert das automatische flashen von Gapps</string>
+    <string name="pref_gapps_summary">Aktiviert das automatische Flashen von Gapps</string>
     <string name="pref_kernel_restore">Kernel wiederherstellen</string>
     <string name="pref_kernel_restore_summary">Aktiviert das automatische Wiederherstellen des aktuellen Kernels</string>
     <string name="pref_prefs_title">PA prefs wiederherstellen</string>
