@@ -10,8 +10,10 @@
     <string name="update_available">Update available!</string>
     <string name="check">Checking for updates</string>
     <string name="update">Start Update</string>
+    <string name="select_rom_zip">Select ROM Zip</string>
     <string name="changelog">View Changelog</string>
     <string name="flash_files">Flash Files</string>
+    <string name="clear_list">Clear List</string>
     <string name="no_files_to_flash">No files to flash!</string>
     <string name="update_dialog_title">Start Update?</string>
     <string name="update_dialog_use_rom">I am going to use this ROM:\n</string>

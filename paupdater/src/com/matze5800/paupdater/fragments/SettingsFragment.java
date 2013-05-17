@@ -2,8 +2,6 @@ package com.matze5800.paupdater.fragments;
 
 import java.util.Calendar;
 
-import com.matze5800.paupdater.AlarmReceiver;
-import com.matze5800.paupdater.R;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -14,6 +12,9 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.matze5800.paupdater.AlarmReceiver;
+import com.matze5800.paupdater.R;
 
 public class SettingsFragment extends PreferenceFragment
 							  implements OnSharedPreferenceChangeListener{

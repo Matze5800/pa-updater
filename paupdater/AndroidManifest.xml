@@ -32,7 +32,6 @@
         </activity>
         <activity
             android:name=".FlashCustomFiles"
-            android:configChanges="orientation"
             android:label="@string/flash_files"
             android:screenOrientation="portrait" />
 

@@ -2,10 +2,12 @@ package com.matze5800.paupdater;
 
 import java.io.File;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -48,9 +50,12 @@ public class FlashCustomFiles extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_flashcustomfiles);
 		mContext = MainActivity.getContext();
 		initialize();
+		final ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
 	}
 
 	// ActionBar
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.flash_files, menu);
@@ -60,6 +65,11 @@ public class FlashCustomFiles extends Activity implements OnClickListener {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case android.R.id.home:
+			Intent intent = new Intent(this, MainActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			return true;
 		case R.id.action_add:
 			AddFiles();
 			break;
@@ -71,8 +81,52 @@ public class FlashCustomFiles extends Activity implements OnClickListener {
 				startFlashProcess();
 
 			break;
+		case R.id.clear_list:
+			reset();
+			break;
 		}
 		return true;
+	}
+
+	private void reset() {
+		File1 = null;
+		File2 = null;
+		File3 = null;
+		File4 = null;
+		File5 = null;
+		File6 = null;
+		File7 = null;
+		File8 = null;
+		File9 = null;
+		File10 = null;
+		tvFilepath1.setText("");
+		tvFilepath2.setText("");
+		tvFilepath3.setText("");
+		tvFilepath4.setText("");
+		tvFilepath5.setText("");
+		tvFilepath6.setText("");
+		tvFilepath7.setText("");
+		tvFilepath8.setText("");
+		tvFilepath9.setText("");
+		tvFilepath10.setText("");
+		file1down.setVisibility(View.INVISIBLE);
+		file2down.setVisibility(View.INVISIBLE);
+		file3down.setVisibility(View.INVISIBLE);
+		file4down.setVisibility(View.INVISIBLE);
+		file5down.setVisibility(View.INVISIBLE);
+		file6down.setVisibility(View.INVISIBLE);
+		file7down.setVisibility(View.INVISIBLE);
+		file8down.setVisibility(View.INVISIBLE);
+		file9down.setVisibility(View.INVISIBLE);
+		file2up.setVisibility(View.INVISIBLE);
+		file3up.setVisibility(View.INVISIBLE);
+		file4up.setVisibility(View.INVISIBLE);
+		file5up.setVisibility(View.INVISIBLE);
+		file6up.setVisibility(View.INVISIBLE);
+		file7up.setVisibility(View.INVISIBLE);
+		file8up.setVisibility(View.INVISIBLE);
+		file9up.setVisibility(View.INVISIBLE);
+		file10up.setVisibility(View.INVISIBLE);
 	}
 
 	// Initialize Views

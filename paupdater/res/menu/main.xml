@@ -7,16 +7,10 @@
         android:showAsAction="always"
         android:title="@string/action_refresh"/>
     <item
-        android:id="@+id/action_flash_m"
+        android:id="@+id/action_flashM"
         android:icon="@drawable/action_flash"
         android:orderInCategory="50"
         android:showAsAction="always"
         android:title="@string/action_flash"/>
-    <item
-        android:id="@+id/action_open"
-        android:icon="@drawable/action_open"
-        android:orderInCategory="25"
-        android:showAsAction="always"
-        android:title="@string/action_open"/>
 
 </menu>
