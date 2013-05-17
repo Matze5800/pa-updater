@@ -2,10 +2,12 @@ package com.matze5800.paupdater;
 
 import java.io.File;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -42,15 +44,27 @@ public class FlashCustomFiles extends Activity implements OnClickListener {
 			File5 = null, File6 = null, File7 = null, File8 = null,
 			File9 = null, File10 = null, thisFile = null, nextFile = null;
 
+	// Localization
+	private String confirm_flash, damage_hint,
+			error_setting_up_openrecovery_script, no_files_to_flash;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_flashcustomfiles);
 		mContext = MainActivity.getContext();
+		final ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
 		initialize();
+		// Localization SetUp
+		confirm_flash = getString(R.string.confirm_flash);
+		damage_hint = getString(R.string.damage_hint);
+		error_setting_up_openrecovery_script = getString(R.string.error_setting_up_openrecovery_script);
+		no_files_to_flash = getString(R.string.no_files_to_flash);
 	}
 
 	// ActionBar
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.flash_files, menu);
@@ -60,19 +74,68 @@ public class FlashCustomFiles extends Activity implements OnClickListener {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case android.R.id.home:
+			Intent intent = new Intent(this, MainActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			return true;
 		case R.id.action_add:
 			AddFiles();
 			break;
 		case R.id.action_flash:
 			if (files == 0)
-				Toast.makeText(this, "No files to flash!", Toast.LENGTH_SHORT)
+				Toast.makeText(this, no_files_to_flash, Toast.LENGTH_SHORT)
 						.show();
 			else
 				startFlashProcess();
 
 			break;
+		case R.id.clear_list:
+			reset();
+			break;
 		}
 		return true;
+	}
+
+	private void reset() {
+		File1 = null;
+		File2 = null;
+		File3 = null;
+		File4 = null;
+		File5 = null;
+		File6 = null;
+		File7 = null;
+		File8 = null;
+		File9 = null;
+		File10 = null;
+		tvFilepath1.setText("");
+		tvFilepath2.setText("");
+		tvFilepath3.setText("");
+		tvFilepath4.setText("");
+		tvFilepath5.setText("");
+		tvFilepath6.setText("");
+		tvFilepath7.setText("");
+		tvFilepath8.setText("");
+		tvFilepath9.setText("");
+		tvFilepath10.setText("");
+		file1down.setVisibility(View.INVISIBLE);
+		file2down.setVisibility(View.INVISIBLE);
+		file3down.setVisibility(View.INVISIBLE);
+		file4down.setVisibility(View.INVISIBLE);
+		file5down.setVisibility(View.INVISIBLE);
+		file6down.setVisibility(View.INVISIBLE);
+		file7down.setVisibility(View.INVISIBLE);
+		file8down.setVisibility(View.INVISIBLE);
+		file9down.setVisibility(View.INVISIBLE);
+		file2up.setVisibility(View.INVISIBLE);
+		file3up.setVisibility(View.INVISIBLE);
+		file4up.setVisibility(View.INVISIBLE);
+		file5up.setVisibility(View.INVISIBLE);
+		file6up.setVisibility(View.INVISIBLE);
+		file7up.setVisibility(View.INVISIBLE);
+		file8up.setVisibility(View.INVISIBLE);
+		file9up.setVisibility(View.INVISIBLE);
+		file10up.setVisibility(View.INVISIBLE);
 	}
 
 	// Initialize Views
@@ -493,9 +556,8 @@ public class FlashCustomFiles extends Activity implements OnClickListener {
 
 	private void startFlashProcess() {
 		AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(this);
-		myAlertDialog.setTitle("Confim flash?");
-		myAlertDialog
-				.setMessage("Are you sure you would like to continue? \nFlashing the wrong file could cause serious damage to your device.");
+		myAlertDialog.setTitle(confirm_flash);
+		myAlertDialog.setMessage(damage_hint);
 		myAlertDialog.setPositiveButton(R.string.update_dialog_do_it,
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface arg0, int arg1) {
@@ -529,9 +591,8 @@ public class FlashCustomFiles extends Activity implements OnClickListener {
 								Shell.sudo("echo install " + File10 + cmd);
 							Shell.sudo("reboot recovery");
 						} catch (ShellException e) {
-							Toast.makeText(
-									mContext,
-									"Error while setting up OpenRecoveryScript! Please perform the actions manually!",
+							Toast.makeText(mContext,
+									error_setting_up_openrecovery_script,
 									Toast.LENGTH_LONG).show();
 							Log.e("reboot",
 									"Error while setting up OpenRecoveryScript!");

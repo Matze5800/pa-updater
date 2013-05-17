@@ -10,7 +10,14 @@
     <string name="update_available">Update verfügbar!</string>
     <string name="check">Suche nach Updates</string>
     <string name="update">Update starten</string>
+    <string name="select_rom_zip">ROM zip auswählen</string>
     <string name="changelog">Changelog ansehen</string>
+    <string name="flash_files">Dateien flashen</string>
+    <string name="clear_list">Leere Liste</string>
+    <string name="no_files_to_flash">Keine Dateien zum Flashen!</string>
+    <string name="confirm_flash">Flashvorgang bestätigen!</string>
+    <string name="damage_hint">Bist du sicher, dass du fortfahren möchtest? \nDas Flashen einer falschen Datei könnte ernsthaften Schaden auf deinem Gerät anrichten.</string>
+    <string name="error_setting_up_openrecovery_script">Beim Erstellen des OpenRecoveryScripts ist ein Fehler aufgetreten! Bitte führe diese Aktionen manuell durch!</string>
     <string name="credits">Entwickelt von Simon Matzeder und Parthipan Ramesh.</string>
     <string name="title_activity_changelog">Changelog ansehen</string>
     <string name="update_dialog_title">Update starten?</string>
@@ -32,6 +39,8 @@
     <string name="wait">Bitte warten</string>
     <string name="action_refresh">Aktualisieren</string>
     <string name="action_open">Wähle eine Custom ROM zip</string>
+    <string name="action_add">Datei hinzufügen</string>
+    <string name="action_flash">Flash Prozess starten?</string>
     <string name="content_edit">Bearbeiten</string>
     <string name="menu_settings">Einstellungen</string>
     <string name="title_activity_settings">Einstellungen</string>
