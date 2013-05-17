@@ -44,14 +44,23 @@ public class FlashCustomFiles extends Activity implements OnClickListener {
 			File5 = null, File6 = null, File7 = null, File8 = null,
 			File9 = null, File10 = null, thisFile = null, nextFile = null;
 
+	// Localization
+	private String confirm_flash, damage_hint,
+			error_setting_up_openrecovery_script, no_files_to_flash;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_flashcustomfiles);
 		mContext = MainActivity.getContext();
-		initialize();
 		final ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
+		initialize();
+		// Localization SetUp
+		confirm_flash = getString(R.string.confirm_flash);
+		damage_hint = getString(R.string.damage_hint);
+		error_setting_up_openrecovery_script = getString(R.string.error_setting_up_openrecovery_script);
+		no_files_to_flash = getString(R.string.no_files_to_flash);
 	}
 
 	// ActionBar
@@ -75,7 +84,7 @@ public class FlashCustomFiles extends Activity implements OnClickListener {
 			break;
 		case R.id.action_flash:
 			if (files == 0)
-				Toast.makeText(this, "No files to flash!", Toast.LENGTH_SHORT)
+				Toast.makeText(this, no_files_to_flash, Toast.LENGTH_SHORT)
 						.show();
 			else
 				startFlashProcess();
@@ -547,9 +556,8 @@ public class FlashCustomFiles extends Activity implements OnClickListener {
 
 	private void startFlashProcess() {
 		AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(this);
-		myAlertDialog.setTitle("Confim flash?");
-		myAlertDialog
-				.setMessage("Are you sure you would like to continue? \nFlashing the wrong file could cause serious damage to your device.");
+		myAlertDialog.setTitle(confirm_flash);
+		myAlertDialog.setMessage(damage_hint);
 		myAlertDialog.setPositiveButton(R.string.update_dialog_do_it,
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface arg0, int arg1) {
@@ -583,9 +591,8 @@ public class FlashCustomFiles extends Activity implements OnClickListener {
 								Shell.sudo("echo install " + File10 + cmd);
 							Shell.sudo("reboot recovery");
 						} catch (ShellException e) {
-							Toast.makeText(
-									mContext,
-									"Error while setting up OpenRecoveryScript! Please perform the actions manually!",
+							Toast.makeText(mContext,
+									error_setting_up_openrecovery_script,
 									Toast.LENGTH_LONG).show();
 							Log.e("reboot",
 									"Error while setting up OpenRecoveryScript!");
