@@ -40,23 +40,33 @@
         android:textSize="@dimen/status_textsize" />
 
     <Button
-        android:id="@+id/startUpdate"
+        android:id="@+id/select_rom_zip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/UpdateStatus"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="30dp"
+        android:onClick="selectROMZip"
+        android:text="@string/select_rom_zip" />
+
+    <Button
+        android:id="@+id/startUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/select_rom_zip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:enabled="false"
         android:onClick="startUpdate"
         android:text="@string/update" />
 
     <TextView
         android:id="@+id/credits"
-        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:text="@string/credits" />
 
 </RelativeLayout>

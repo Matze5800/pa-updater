@@ -47,7 +47,6 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 				getFragmentManager());
 
 		final ActionBar actionBar = getActionBar();
-		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -87,26 +86,9 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 			mViewPager.setCurrentItem(0);
 			refresh();
 			break;
-		case R.id.action_flash_m:
+		case R.id.action_flashM:
 			Intent intent = new Intent(this, FlashCustomFiles.class);
 			startActivity(intent);
-			break;
-		case R.id.action_open:
-			mViewPager.setCurrentItem(0);
-			File mPath = new File(Environment.getExternalStorageDirectory()
-					+ "//DIR//");
-			FileDialog fileDialog = new FileDialog(this, mPath);
-			fileDialog.setFileEndsWith(".zip");
-			fileDialog.addFileListener(new FileDialog.FileSelectedListener() {
-				public void fileSelected(File file) {
-					String path = file.toString();
-					Log.i("CustomZip", "Selected file " + path);
-					prefs.edit().putBoolean("customZip", true).commit();
-					prefs.edit().putString("customZipPath", path).commit();
-					UpdateFragment.getUpdateButton().setEnabled(true);
-				}
-			});
-			fileDialog.showDialog();
 			break;
 		}
 		return true;
@@ -223,6 +205,24 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 				});
 		myAlertDialog.setNegativeButton(R.string.update_dialog_cancel, null);
 		myAlertDialog.show();
+	}
+
+	// UpdateButton
+	public void selectROMZip(View view) {
+		File mPath = new File(Environment.getExternalStorageDirectory()
+				+ "//DIR//");
+		FileDialog fileDialog = new FileDialog(this, mPath);
+		fileDialog.setFileEndsWith(".zip");
+		fileDialog.addFileListener(new FileDialog.FileSelectedListener() {
+			public void fileSelected(File file) {
+				String path = file.toString();
+				Log.i("CustomZip", "Selected file " + path);
+				prefs.edit().putBoolean("customZip", true).commit();
+				prefs.edit().putString("customZipPath", path).commit();
+				UpdateFragment.getUpdateButton().setEnabled(true);
+			}
+		});
+		fileDialog.showDialog();
 	}
 
 	// StartUpdateService
