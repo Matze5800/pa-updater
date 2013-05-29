@@ -60,13 +60,4 @@
         android:onClick="startUpdate"
         android:text="@string/update" />
 
-    <TextView
-        android:id="@+id/credits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="@string/credits" />
-
 </RelativeLayout>
