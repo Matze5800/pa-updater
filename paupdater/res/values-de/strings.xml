@@ -6,7 +6,7 @@
     <string name="CheckGooVersion">Überprüfe goo.im Version</string>
     <string name="error">Fehler!</string>
     <string name="img_descr_status">Aktueller Status</string>
-    <string name="uptodate">Du bist auf dem aktuellsten Stand.</string>
+    <string name="uptodate">Du bist auf dem aktuellen Stand.</string>
     <string name="update_available">Update verfügbar!</string>
     <string name="check">Suche nach Updates</string>
     <string name="update">Update starten</string>

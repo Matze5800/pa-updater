@@ -2,6 +2,8 @@ package com.matze5800.paupdater;
 
 import java.io.File;
 
+import android.graphics.Color;
+import android.support.v4.view.PagerTabStrip;
 import com.matze5800.paupdater.AppSectionsPagerAdapter;
 import com.matze5800.paupdater.fragments.UpdateFragment;
 import android.app.ActionBar;
@@ -24,7 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements ActionBar.TabListener {
+public class MainActivity extends Activity{
 
 	AppSectionsPagerAdapter mAppSectionsPagerAdapter;
 	static Context context;
@@ -46,24 +48,12 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 		mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(
 				getFragmentManager());
 
-		final ActionBar actionBar = getActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mAppSectionsPagerAdapter);
-		mViewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						actionBar.setSelectedNavigationItem(position);
-					}
-				});
 
-		for (int i = 0; i < mAppSectionsPagerAdapter.getCount(); i++) {
-			actionBar.addTab(actionBar.newTab()
-					.setText(mAppSectionsPagerAdapter.getPageTitle(i))
-					.setTabListener(this));
-		}
+        PagerTabStrip pagerTabStrip = (PagerTabStrip) findViewById(R.id.pager_title_strip);
+        pagerTabStrip.setDrawFullUnderline(true);
+        pagerTabStrip.setTabIndicatorColor(Color.rgb(0, 153, 204));
 
 		// Finishes Activity if device is not supported
 		device = Functions.detectDevice(context);
@@ -92,20 +82,6 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 			break;
 		}
 		return true;
-	}
-
-	// ActionBar TabListener
-	@Override
-	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
-	}
-
-	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		mViewPager.setCurrentItem(tab.getPosition());
-	}
-
-	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 	}
 
 	// Gets Goo Version
