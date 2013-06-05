@@ -387,7 +387,16 @@ public class Functions {
                 prefs.edit().putString("rom_md5", e.getString("md5")).commit();
                 json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/paranoidandroid/roms/gapps");
                 files = json.getJSONArray("list");
-                item=0;
+                String filename;
+                item = 0;
+                e = files.getJSONObject(item);
+                try{filename = e.getString("filename");} catch(JSONException ex) {filename = null;}
+                while(filename == null) {
+                    Log.i("Goo Parser", "GAPPS: No file, skipping item "+item);
+                    item = item + 1;
+                    e = files.getJSONObject(item);
+                    try{filename = e.getString("filename");} catch(JSONException ex) {filename = null;}
+                }
                 e = files.getJSONObject(item);
                 url = "http://goo.im" + e.getString("path");
                 Log.i("Goo Parser", "GAPPS URL: " + url);
