@@ -49,6 +49,8 @@ public class ChangelogFragment extends Fragment {
 		final WebView webView1 = (WebView) rootView.findViewById(R.id.webView1);
 		WebSettings settings = webView1.getSettings();
 		settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        settings.setJavaScriptEnabled(true);
+        settings.setJavaScriptCanOpenWindowsAutomatically(true);
 		webView1.setWebViewClient(new WebViewClient());
 		if(prefs.getString("Dev", "paranoidandroid").equals("dsmitty166")){
 			webView1.loadUrl("https://dl.dropboxusercontent.com/u/569065/changelog.html");
@@ -56,16 +58,7 @@ public class ChangelogFragment extends Fragment {
             webView1.loadUrl(("https://plus.google.com/app/basic/107979589566958860409/posts"));}
             //URL to old changelog:
             //http://matze5800.de/changelog/"+device
-
-        //Disable navigation and open in the Browser when clicking a link
-		webView1.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View arg0, MotionEvent arg1) {
-				webView1.setWebViewClient(null);
-				return false;
-			}
-        });
-		
+			
 		return rootView;
 	}
 }
