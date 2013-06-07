@@ -360,7 +360,7 @@ public class Functions {
             JSONObject e;
             int item = 1;
 
-            if(Dev.equals("dsmitty166") || Dev.equals("fabi280")){CheckDev = false;}
+            if(Dev.equals("dsmitty166") || Dev.equals("fabi280") || Dev.equals("BigB1984")){CheckDev = false;}
 
             if (CheckDev)	{
                 json = JSONfunctions.getJSONfromURL("http://goo.im/json2&action=search&query=pa_"+device);
@@ -371,6 +371,7 @@ public class Functions {
                 if(Dev.equals("dsmitty166") && Rom.equals("Zion")) {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/dsmitty166/Zion");}
                 else if(Dev.equals("dsmitty166") && Rom.equals("paranoidandroid_nightly")) {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/NIGHTLIES/"+device);}
                 else if(Dev.equals("fabi280") && Rom.equals("paranoidandroid_nightly")) {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/fabi280/"+device+"_pa_nightly");}
+                else if(Dev.equals("BigB1984") && Rom.equals("Rubik-maguro-jb")) {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/BigBrother1984/RUBIK/ROM/PURE/maguro"+device);}
                 else {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/paranoidandroid/roms/"+device);}
                 if (json != null)	{
                     files = json.getJSONArray("list");

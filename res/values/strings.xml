@@ -55,8 +55,7 @@
     <string name="pref_kernel_restore_summary">Enable automatic restore of the currently installed Kernel</string>
     <string name="pref_prefs_title">Restore PA prefs</string>
     <string name="pref_prefs_summary">Enable automatic restore of current PA Preferences</string>
-    <string name="pref_WipeCache">Wipe Cache</string>
-    <string name="pref_WipeDalvik">Wipe Dalvik Cache</string>
+    <string name="pref_WipeCache_DalvikCache">Wipe Cache/Dalvik Cache</string>
     <string name="pref_backup_setting">Backup Settings</string>
     <string name="pref_backup">Create Backup</string>
     <string name="pref_backup_boot">Backup Boot</string>

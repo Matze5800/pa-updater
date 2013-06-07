@@ -21,13 +21,11 @@ import android.app.FragmentManager;
 import android.support.v13.app.FragmentPagerAdapter;
 
 import com.matze5800.paupdater.fragments.ChangelogFragment;
-import com.matze5800.paupdater.fragments.SettingsFragment;
 import com.matze5800.paupdater.fragments.UpdateFragment;
 
 public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 
-	private String preferences = MainActivity.getTab3();
-	private final String[] titles = { "Update", "Changelog", preferences };
+	private final String[] titles = { "Update", "Changelog"};
 
 	public AppSectionsPagerAdapter(FragmentManager fm) {
 		super(fm);
@@ -42,9 +40,6 @@ public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 		case 1:
 			return new ChangelogFragment();
 
-		case 2:
-			return new SettingsFragment();
-
 		default:
 			return null;
 		}
@@ -52,7 +47,7 @@ public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public int getCount() {
-		return 3;
+		return 2;
 	}
 
 	@Override

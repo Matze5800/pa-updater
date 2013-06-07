@@ -58,7 +58,7 @@ public class ChangelogFragment extends Fragment {
             webView1.loadUrl(("https://plus.google.com/app/basic/107979589566958860409/posts"));}
             //URL to old changelog:
             //http://matze5800.de/changelog/"+device
-			
+		
 		return rootView;
 	}
 }

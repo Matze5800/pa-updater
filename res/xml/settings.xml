@@ -18,13 +18,18 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_update_setting" >
         <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="prefWipeCache_DalvikCache"
+                android:title="@string/pref_WipeCache_DalvikCache" >
+        </CheckBoxPreference>
+        <CheckBoxPreference
             android:defaultValue="true"
             android:key="prefFlashGapps"
             android:summary="@string/pref_gapps_summary"
             android:title="@string/pref_gapps_title" >
         </CheckBoxPreference>
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="prefKernelRestore"
             android:summary="@string/pref_kernel_restore_summary"
             android:title="@string/pref_kernel_restore" >
@@ -34,16 +39,6 @@
             android:key="prefPrefsRestore"
             android:summary="@string/pref_prefs_summary"
             android:title="@string/pref_prefs_title" >
-        </CheckBoxPreference>
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="prefWipeCache"
-            android:title="@string/pref_WipeCache" >
-        </CheckBoxPreference>
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="prefWipeDalvik"
-            android:title="@string/pref_WipeDalvik" >
         </CheckBoxPreference>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_backup_setting" >

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.matze5800.paupdater.fragments;
+package com.matze5800.paupdater;
 
 import java.util.Calendar;
 
