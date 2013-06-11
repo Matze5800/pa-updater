@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.matze5800.paupdater.fragments;
 
 import android.app.Fragment;
@@ -22,9 +22,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -55,10 +53,8 @@ public class ChangelogFragment extends Fragment {
 		if(prefs.getString("Dev", "paranoidandroid").equals("dsmitty166")){
 			webView1.loadUrl("https://dl.dropboxusercontent.com/u/569065/changelog.html");
 		} else {
-            webView1.loadUrl(("https://plus.google.com/app/basic/107979589566958860409/posts"));}
-            //URL to old changelog:
-            //http://matze5800.de/changelog/"+device
-			
+            webView1.loadUrl(("https://plus.google.com/app/basic/107979589566958860409/posts"));
+        }		
 		return rootView;
 	}
 }

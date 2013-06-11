@@ -1,27 +1,20 @@
+/*
+ * Copyright (C) 2013 PA Updater (Simon Matzeder and Parthipan Ramesh)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.matze5800.paupdater;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.math.BigInteger;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.text.DecimalFormat;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -36,8 +29,24 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.*;
+import java.math.BigInteger;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 public class Functions {
+
     static Boolean RomDownloading = false;
     static Boolean GappsDownloading = false;
     static String RomProgress;
@@ -46,15 +55,15 @@ public class Functions {
     static int GappsDownloaded;
     static int RomTotal;
     static int GappsTotal;
+
     public static void addFilesToExistingZip(File zipFile,
                                              File[] files) throws IOException {
-        File tempFile = new File(Environment.getExternalStorageDirectory()+"/pa_updater", "temp_kernel.zip");
+        File tempFile = new File(Environment.getExternalStorageDirectory() + "/pa_updater", "temp_kernel.zip");
         tempFile.delete();
 
-        boolean renameOk=zipFile.renameTo(tempFile);
-        if (!renameOk)
-        {
-            throw new RuntimeException("could not rename the file "+zipFile.getAbsolutePath()+" to "+tempFile.getAbsolutePath());
+        boolean renameOk = zipFile.renameTo(tempFile);
+        if (!renameOk) {
+            throw new RuntimeException("could not rename the file " + zipFile.getAbsolutePath() + " to " + tempFile.getAbsolutePath());
         }
         byte[] buf = new byte[1024];
 
@@ -105,7 +114,7 @@ public class Functions {
         File file = new File(Environment.getExternalStorageDirectory(), path);
         if (!file.exists()) {
             if (!file.mkdirs()) {
-                Log.e("Create Dir", "Error creating folder "+path);
+                Log.e("Create Dir", "Error creating folder " + path);
                 ret = false;
             }
         }
@@ -174,7 +183,7 @@ public class Functions {
         }
     }
 
-    public static void Notify(Context context, String text)	{
+    public static void Notify(Context context, String text) {
         Log.i("notify", text);
         Notification.Builder nBuilder;
         nBuilder = new Notification.Builder(context);
@@ -198,76 +207,125 @@ public class Functions {
         mNotificationManager.notify(1, nBuilder.build());
     }
 
-    public static void Clear(Context context)	{
+    public static void Clear(Context context) {
         NotificationManager mNotificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.cancelAll();
     }
 
-    public static String detectDevice(Context context)	{
+    public static String detectDevice(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String device = android.os.Build.DEVICE;
         String savedDevice = prefs.getString("device", "");
         String result = "";
-        if (savedDevice.equals(""))	{
-            if(device.equalsIgnoreCase("mako")){result="mako";}
-            else if(device.equalsIgnoreCase("maguro")){result="maguro";}
-            else if(device.equalsIgnoreCase("grouper")){result="grouper";}
-            else if(device.equalsIgnoreCase("m0") || device.equalsIgnoreCase("i9300") || device.equalsIgnoreCase("GT-I9300")){result="i9300";}
-            else if(device.equalsIgnoreCase("manta")){result="manta";}
-            else if(device.equalsIgnoreCase("t03g") || device.equalsIgnoreCase("n7100") || device.equalsIgnoreCase("GT-N7100")){result="n7100";}
-            else if(device.equalsIgnoreCase("tilapia")){result="tilapia";}
-            else if(device.equalsIgnoreCase("toro")){result="toro";}
-            else if(device.equalsIgnoreCase("toroplus")){result="toroplus";}
-            else {
+        if (savedDevice.equals("")) {
+            if (device.equalsIgnoreCase("mako")) {
+                result = "mako";
+            } else if (device.equalsIgnoreCase("maguro")) {
+                result = "maguro";
+            } else if (device.equalsIgnoreCase("grouper")) {
+                result = "grouper";
+            } else if (device.equalsIgnoreCase("m0") || device.equalsIgnoreCase("i9300") || device.equalsIgnoreCase("GT-I9300")) {
+                result = "i9300";
+            } else if (device.equalsIgnoreCase("manta")) {
+                result = "manta";
+            } else if (device.equalsIgnoreCase("t03g") || device.equalsIgnoreCase("n7100") || device.equalsIgnoreCase("GT-N7100")) {
+                result = "n7100";
+            } else if (device.equalsIgnoreCase("tilapia")) {
+                result = "tilapia";
+            } else if (device.equalsIgnoreCase("toro")) {
+                result = "toro";
+            } else if (device.equalsIgnoreCase("toroplus")) {
+                result = "toroplus";
+            } else if (device.equalsIgnoreCase("find5")) {
+                result = "find5";
+            } else if (device.equalsIgnoreCase("crespo")) {
+                result = "crespo";
+            } else if (device.equalsIgnoreCase("d2tmo")) {
+                result = "d2tmo";
+            } else if (device.equalsIgnoreCase("i9100")) {
+                result = "i9100";
+            } else if (device.equalsIgnoreCase("i9100g")) {
+                result = "i9100g";
+            } else if (device.equalsIgnoreCase("n7000")) {
+                result = "n7000";
+            } else if (device.equalsIgnoreCase("smba1002")) {
+                result = "smba1002";
+            } else if (device.equalsIgnoreCase("tf700t")) {
+                result = "tf700t";
+            } else {
                 Toast.makeText(context, "Sorry, your device is not supported yet!", Toast.LENGTH_LONG).show();
                 result = "unsupported";
             }
             prefs.edit().putString("device", result).commit();
-        } else {result = savedDevice;}
-        Log.i("detectDevice", result+" detected.");
+        } else {
+            result = savedDevice;
+        }
+        Log.i("detectDevice", result + " detected.");
         return result;
     }
 
-    public static String getBootPartition(Context context)	{
+    public static String getBootPartition(Context context) {
         String device = detectDevice(context);
         String result = "";
-        if(device.equals("mako")){result="/dev/block/platform/msm_sdcc.1/by-name/boot";}
-        else if(device.equals("maguro") || device.equals("toro") || device.equals("toroplus")){result="/dev/block/platform/omap/omap_hsmmc.0/by-name/boot";}
-        else if(device.equals("grouper") || device.equals("tilapia")){result="/dev/block/platform/sdhci-tegra.3/by-name/LNX";}
-        else if(device.equals("i9300")){result="/dev/block/mmcblk0p5";}
-        else if(device.equals("n7100")){result="/dev/block/mmcblk0p8";}
-        else if(device.equals("manta")){result="/dev/block/platform/dw_mmc.0/by-name/boot";}
-        Log.i("getBootPartition", "Boot partition for "+device+": "+result);
+        if (device.equals("mako")) {
+            result = "/dev/block/platform/msm_sdcc.1/by-name/boot";
+        } else if (device.equals("maguro") || device.equals("toro") || device.equals("toroplus")) {
+            result = "/dev/block/platform/omap/omap_hsmmc.0/by-name/boot";
+        } else if (device.equals("grouper") || device.equals("tilapia")) {
+            result = "/dev/block/platform/sdhci-tegra.3/by-name/LNX";
+        } else if (device.equals("i9300")) {
+            result = "/dev/block/mmcblk0p5";
+        } else if (device.equals("n7100")) {
+            result = "/dev/block/mmcblk0p8";
+        } else if (device.equals("manta")) {
+            result = "/dev/block/platform/dw_mmc.0/by-name/boot";
+        } else if (device.equals("find5")) {
+            result = "/dev/block/mmcblk0p18";
+        } else if (device.equals("crespo")) {
+            result = "/dev/block/mtdblock2";
+        } else if (device.equals("d2tmo")) {
+            result = "/dev/block/mmcblk0p7";
+        } else if (device.equals("i9100")) {
+            result = "/dev/block/mmcblk0p5";
+        } else if (device.equals("i9100g")) {
+            result = "/dev/block/mmcblk0p5";
+        } else if (device.equals("n7000")) {
+            result = "/dev/block/mmcblk0p5";
+        } else if (device.equals("smba1002")) {
+            result = "/dev/block/mmcblk0p8";
+        } else if (device.equals("tf700t")) {
+            result = "/dev/block/mmcblk0p4";
+        }
+        Log.i("getBootPartition", "Boot partition for " + device + ": " + result);
         return result;
     }
 
     public static boolean deleteDirectory(File path) {
-        Log.i("deleteDir", "Deleting "+path.getPath());
-        if( path.exists() ) {
+        Log.i("deleteDir", "Deleting " + path.getPath());
+        if (path.exists()) {
             File[] files = path.listFiles();
             if (files == null) {
                 return true;
             }
-            for(int i=0; i<files.length; i++) {
-                if(files[i].isDirectory()) {
+            for (int i = 0; i < files.length; i++) {
+                if (files[i].isDirectory()) {
                     deleteDirectory(files[i]);
-                }
-                else {
+                } else {
                     files[i].delete();
                 }
             }
         }
-        return( path.delete() );
+        return (path.delete());
     }
 
-    public static boolean WifiConnected(Context context)	{
+    public static boolean WifiConnected(Context context) {
         ConnectivityManager connManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         return mWifi.isConnected();
     }
 
-    public static String getDevId(Context context)	{
+    public static String getDevId(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         Process proc;
         BufferedReader reader;
@@ -279,13 +337,15 @@ public class Functions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(Dev.equals(null)){Dev="Error parsing ro.goo.developerid!";}
-        Log.i("Local Parser", "Developer: "+Dev);
+        if (Dev.equals(null)) {
+            Dev = "Error parsing ro.goo.developerid!";
+        }
+        Log.i("Local Parser", "Developer: " + Dev);
         prefs.edit().putString("Dev", Dev).commit();
         return Dev;
     }
 
-    public static String getRomId(Context context)	{
+    public static String getRomId(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         Process proc;
         BufferedReader reader;
@@ -297,13 +357,15 @@ public class Functions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(Rom.equals(null)){Rom="Error parsing ro.goo.rom!";}
-        Log.i("Local Parser", "Rom: "+Rom);
+        if (Rom.equals(null)) {
+            Rom = "Error parsing ro.goo.rom!";
+        }
+        Log.i("Local Parser", "Rom: " + Rom);
         prefs.edit().putString("Rom", Rom).commit();
         return Rom;
     }
 
-    public static int getLocalVersion(Context context)	{
+    public static int getLocalVersion(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         Process proc;
         BufferedReader reader;
@@ -313,7 +375,7 @@ public class Functions {
             reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String result = reader.readLine();
 
-            if(result.equals("") || result.equals(null))	{
+            if (result.equals("") || result.equals(null)) {
                 Log.i("Local Parser", "Not running on PA!!!");
                 Log.i("Local Parser", "Disabling PA Prefs Restore");
                 Toast.makeText(context, "You are not running PA! You should wipe data after flash!", Toast.LENGTH_LONG).show();
@@ -323,7 +385,7 @@ public class Functions {
                 localVer = Integer.valueOf(result);
                 prefs.edit().putBoolean("NoPA", false).commit();
             }
-            Log.i("Local Parser", "Local version: "+localVer);
+            Log.i("Local Parser", "Local version: " + localVer);
         } catch (IOException e) {
             Log.e("Local Parser", "Error parsing local version!");
             Log.e("Local Parser", e.toString());
@@ -331,50 +393,69 @@ public class Functions {
         return localVer;
     }
 
-    public static String CheckGoo(Context context)	{
+    public static String CheckGoo(Context context) {
         String Rom = getRomId(context);
         String Dev = getDevId(context);
         String device = detectDevice(context);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        Boolean CheckDev = prefs.getBoolean("prefCheckDev", false);
+        Boolean CheckDev = prefs.getBoolean("prefCheckDev", true);
         String result = null;
-        try{
+        try {
             JSONArray files = null;
             JSONObject json = null;
             JSONObject e;
             int item = 1;
 
-            if(Dev.equals("dsmitty166") || Dev.equals("fabi280")){CheckDev = false;}
+            if (Dev.equals("dsmitty166") || Dev.equals("fabi280") || Dev.equals("BigB1984")) {
+                CheckDev = false;
+            }
 
-            if (CheckDev)	{
-                json = JSONfunctions.getJSONfromURL("http://goo.im/json2&action=search&query=pa_"+device);
-                if (json != null)	{
+            if (CheckDev) {
+                json = JSONfunctions.getJSONfromURL("http://goo.im/json2&action=search&query=pa_" + device);
+                if (json != null) {
                     files = json.getJSONArray("search_result");
                     item = 0;
-                }} else {
-                if(Dev.equals("dsmitty166") && Rom.equals("Zion")) {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/dsmitty166/Zion");}
-                else if(Dev.equals("dsmitty166") && Rom.equals("paranoidandroid_nightly")) {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/NIGHTLIES/"+device);}
-                else if(Dev.equals("fabi280") && Rom.equals("paranoidandroid_nightly")) {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/fabi280/"+device+"_pa_nightly");}
-                else {json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/paranoidandroid/roms/"+device);}
-                if (json != null)	{
+                }
+            } else {
+                if (Dev.equals("dsmitty166") && Rom.equals("Zion")) {
+                    json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/dsmitty166/Zion");
+                } else if (Dev.equals("dsmitty166") && Rom.equals("paranoidandroid_nightly")) {
+                    json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/NIGHTLIES/" + device);
+                } else if (Dev.equals("fabi280") && Rom.equals("paranoidandroid_nightly")) {
+                    json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/fabi280/" + device + "_pa_nightly");
+                } else if (Dev.equals("BigB1984") && Rom.equals("Rubik-maguro-jb")) {
+                    json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/BigBrother1984/RUBIK/ROM/PURE/maguro" + device);
+                } else {
+                    json = JSONfunctions.getJSONfromURL("http://goo.im/json2&path=/devs/paranoidandroid/roms/" + device);
+                }
+                if (json != null) {
                     files = json.getJSONArray("list");
                     String version;
                     item = 0;
                     e = files.getJSONObject(item);
-                    try{version = e.getString("ro_version");} catch(JSONException ex) {version = null;}
-                    while(version == null) {
-                        Log.i("Goo Parser", "No file, skipping item "+item);
+                    try {
+                        version = e.getString("ro_version");
+                    } catch (JSONException ex) {
+                        version = null;
+                    }
+                    while (version == null) {
+                        Log.i("Goo Parser", "No file, skipping item " + item);
                         item = item + 1;
                         e = files.getJSONObject(item);
-                        try{version = e.getString("ro_version");} catch(JSONException ex) {version = null;}
+                        try {
+                            version = e.getString("ro_version");
+                        } catch (JSONException ex) {
+                            version = null;
+                        }
                     }
-                }}
-            if (json != null){
+                }
+            }
+            if (json != null) {
                 e = files.getJSONObject(item);
                 String gooDev = e.getString("ro_developerid");
-                while(!gooDev.equals(Dev))	{
+                while (!gooDev.equals(Dev)) {
                     item = item + 1;
-                    Log.i("Goo Parser", "Wrong dev, skipping item "+item);
+                    Log.i("Goo Parser", "Wrong dev, skipping item " + item);
                     e = files.getJSONObject(item);
                     gooDev = e.getString("ro_developerid");
                 }
@@ -390,12 +471,20 @@ public class Functions {
                 String filename;
                 item = 0;
                 e = files.getJSONObject(item);
-                try{filename = e.getString("filename");} catch(JSONException ex) {filename = null;}
-                while(filename == null) {
-                    Log.i("Goo Parser", "GAPPS: No file, skipping item "+item);
+                try {
+                    filename = e.getString("filename");
+                } catch (JSONException ex) {
+                    filename = null;
+                }
+                while (filename == null) {
+                    Log.i("Goo Parser", "GAPPS: No file, skipping item " + item);
                     item = item + 1;
                     e = files.getJSONObject(item);
-                    try{filename = e.getString("filename");} catch(JSONException ex) {filename = null;}
+                    try {
+                        filename = e.getString("filename");
+                    } catch (JSONException ex) {
+                        filename = null;
+                    }
                 }
                 e = files.getJSONObject(item);
                 url = "http://goo.im" + e.getString("path");
@@ -403,14 +492,16 @@ public class Functions {
                 prefs.edit().putString("gappsURL", url).commit();
                 prefs.edit().putString("gappsmd5", e.getString("md5")).commit();
                 prefs.edit().putString("gappsFilename", e.getString("filename")).commit();
-            } else {return "err";}
-        }catch(Exception e)		{
-            Log.e("Goo Parser", "Error parsing data "+e.toString());
+            } else {
+                return "err";
+            }
+        } catch (Exception e) {
+            Log.e("Goo Parser", "Error parsing data " + e.toString());
         }
         return result;
     }
 
-    public static void DownloadFile(String urlstring, String destname, Context context, int mode)	{
+    public static void DownloadFile(String urlstring, String destname, Context context, int mode) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         switch (mode) {
             case 1:
@@ -439,7 +530,7 @@ public class Functions {
             urlConnection.connect();
 
             //set the path where we want to save the file
-            String SDCardRoot = Environment.getExternalStorageDirectory()+"/pa_updater";
+            String SDCardRoot = Environment.getExternalStorageDirectory() + "/pa_updater";
             //create a new file, specifying the path, and the filename
             //which we want to save the file as.
             File file = new File(SDCardRoot, destname);
@@ -462,14 +553,14 @@ public class Functions {
 
             int i = 0;
             //now, read through the input buffer and write the contents to the file
-            while ( (bufferLength = inputStream.read(buffer)) > 0 ) {
+            while ((bufferLength = inputStream.read(buffer)) > 0) {
                 //add the data in the buffer to the file in the file output stream (the file on the sd card
                 fileOutput.write(buffer, 0, bufferLength);
                 //add up the size so we know how much is downloaded
                 downloadedSize += bufferLength;
                 //report the progress
                 i += 1;
-                if(i == 200){
+                if (i == 200) {
                     updateProgress(downloadedSize, totalSize, context, mode);
                     i = 0;
                 }
@@ -483,11 +574,15 @@ public class Functions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(mode==1){RomDownloading=false;}
-        if(mode==2){GappsDownloading=false;}
+        if (mode == 1) {
+            RomDownloading = false;
+        }
+        if (mode == 2) {
+            GappsDownloading = false;
+        }
     }
 
-    public static void ResumeDownloadFile(String urlstring, String destname, Context context, int mode)	{
+    public static void ResumeDownloadFile(String urlstring, String destname, Context context, int mode) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         switch (mode) {
             case 1:
@@ -507,7 +602,7 @@ public class Functions {
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
             //set the path where we want to save the file
-            String SDCardRoot = Environment.getExternalStorageDirectory()+"/pa_updater";
+            String SDCardRoot = Environment.getExternalStorageDirectory() + "/pa_updater";
 
             //create a new file, specifying the path, and the filename
             //which we want to save the file as.
@@ -537,14 +632,14 @@ public class Functions {
 
             int i = 0;
             //now, read through the input buffer and write the contents to the file
-            while ( (bufferLength = inputStream.read(buffer)) > 0 ) {
+            while ((bufferLength = inputStream.read(buffer)) > 0) {
                 //add the data in the buffer to the file in the file output stream (the file on the sd card
                 fileOutput.write(buffer, 0, bufferLength);
                 //add up the size so we know how much is downloaded
                 downloadedSize += bufferLength;
                 //report the progress
                 i += 1;
-                if(i == 200){
+                if (i == 200) {
                     updateProgress(downloadedSize, totalSize, context, mode);
                     i = 0;
                 }
@@ -558,11 +653,15 @@ public class Functions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(mode==1){RomDownloading=false;}
-        if(mode==2){GappsDownloading=false;}
+        if (mode == 1) {
+            RomDownloading = false;
+        }
+        if (mode == 2) {
+            GappsDownloading = false;
+        }
     }
 
-    private static void updateProgress(int downloadedSize, int totalSize, Context context, int mode)	{
+    private static void updateProgress(int downloadedSize, int totalSize, Context context, int mode) {
         Notification.Builder nBuilder;
         nBuilder = new Notification.Builder(context);
         Intent resultIntent = new Intent(context, Cancel.class);
@@ -571,14 +670,22 @@ public class Functions {
         double value = (double) downloadedSize / totalSize;
         DecimalFormat df = new DecimalFormat("#.#%");
 
-        if(mode==1){RomDownloading=true;}
-        if(mode==2){GappsDownloading=true;}
-        if(mode==1){RomProgress = df.format(value);
+        if (mode == 1) {
+            RomDownloading = true;
+        }
+        if (mode == 2) {
+            GappsDownloading = true;
+        }
+        if (mode == 1) {
+            RomProgress = df.format(value);
             RomDownloaded = downloadedSize;
-            RomTotal = totalSize;}
-        if(mode==2){GappsProgress = df.format(value);
+            RomTotal = totalSize;
+        }
+        if (mode == 2) {
+            GappsProgress = df.format(value);
             GappsDownloaded = downloadedSize;
-            GappsTotal = totalSize;}
+            GappsTotal = totalSize;
+        }
 
         stackBuilder.addParentStack(Cancel.class);
         stackBuilder.addNextIntent(resultIntent);
@@ -591,17 +698,19 @@ public class Functions {
         nBuilder.setSmallIcon(R.drawable.ic_launcher);
         nBuilder.setContentTitle("PA Updater");
 
-        if(RomDownloading){
+        if (RomDownloading) {
             sBuilder.append("Downloading ROM: " + RomProgress + "  ");
         }
-        if(GappsDownloading){
+        if (GappsDownloading) {
             sBuilder.append("Downloading Gapps: " + GappsProgress);
         }
         nBuilder.setContentText(sBuilder.toString());
 
-        if(RomDownloading && GappsDownloading){
+        if (RomDownloading && GappsDownloading) {
             nBuilder.setProgress(RomTotal + GappsTotal, RomDownloaded + GappsDownloaded, false);
-        } else {nBuilder.setProgress(totalSize, downloadedSize, false);}
+        } else {
+            nBuilder.setProgress(totalSize, downloadedSize, false);
+        }
         nBuilder.setAutoCancel(false);
         nBuilder.setOngoing(true);
         NotificationManager mNotificationManager =

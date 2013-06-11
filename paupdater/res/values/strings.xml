@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">PA Updater</string>
+    <string name="app_name">ParanoidUpdater</string>
     <string name="action_settings">Settings</string>
     <string name="CheckGooVersion">Checking goo.im version</string>
     <string name="error">Error!</string>
-    <string name="img_descr_status">Current Status</string>
+    <string name="img_descr_status">Current status</string>
     <string name="uptodate">You are up to date.</string>
     <string name="update_available">Update available!</string>
     <string name="check">Checking for updates</string>
-    <string name="update">Start Update</string>
+    <string name="update">Start update</string>
     <string name="select_rom_zip">Select ROM zip</string>
-    <string name="changelog">View Changelog</string>
-    <string name="flash_files">Flash Files</string>
-    <string name="clear_list">Clear List</string>
-    <string name="no_files_to_flash">No files to flash!</string>
-    <string name="confirm_flash">Confirm flash!</string>
-    <string name="damage_hint">Are you sure you would like to continue? \nFlashing the wrong file could cause serious damage to your device.</string>
+    <string name="flash_files">Flash custom files</string>
+    <string name="clear_list">Clear list</string>
+    <string name="no_files_to_flash">No files to install!</string>
+    <string name="confirm_flash">Please confirm!</string>
+    <string name="damage_hint">Installing the wrong files could impact your device badly, do you want to go on?</string>
     <string name="error_setting_up_openrecovery_script">Error while setting up OpenRecoveryScript! Please perform the actions manually!</string>
-    <string name="update_dialog_title">Start Update?</string>
+    <string name="update_dialog_title">Start Download?</string>
     <string name="update_dialog_use_rom">I am going to use this ROM:\n</string>
-    <string name="update_dialog_download_rom">I am going to download this ROM:\n</string>
-    <string name="update_dialog_gapps">And this Gapps Package:\n</string>
-    <string name="update_dialog_do_it">Do it!</string>
+    <string name="update_dialog_download_rom">Latest ROM:\n</string>
+    <string name="update_dialog_gapps">Latest Google apps package:\n</string>
+    <string name="update_dialog_do_it">Ok</string>
     <string name="update_dialog_cancel">Cancel</string>
     <string name="update_dialog_no_wifi">You are not on WiFi!</string>
-    <string name="update_dialog_lot_traffic">Starting the update will cause lots of traffic!\n\nAre you sure that you want to start it?</string>
+    <string name="update_dialog_lot_traffic">Starting the update will cause traffic!\n\nAre you sure that you want to start it?</string>
     <string name="update_dialog_yes">Yes</string>
     <string name="update_dialog_no">No</string>
     <string name="credits">Developed by Simon Matzeder and Parthipan Ramesh.</string>
-    <string name="title_activity_changelog">View Changelog</string>
     <string name="title_activity_download_req">Download Request</string>
     <string name="title_activity_cancel">Cancel</string>
     <string name="cancel">Do you want to cancel the update?</string>
@@ -47,16 +45,15 @@
     <string name="pref_notification">Notification Settings</string>
     <string name="pref_updatecheck">Update check frequency</string>
     <string name="pref_updatecheck_summary">Set the update check frequency</string>
-    <string name="pref_checkDev">Check dev folder</string>
+    <string name="pref_checkDev">Check alpha/dev folder</string>
     <string name="pref_update_setting">Update Settings</string>
-    <string name="pref_gapps_title">Flash Gapps</string>
-    <string name="pref_gapps_summary">Enable automatic Gapps flashing</string>
+    <string name="pref_gapps_title">Flash Google apps</string>
+    <string name="pref_gapps_summary">Enable automatic Google apps flashing</string>
     <string name="pref_kernel_restore">Restore Kernel</string>
     <string name="pref_kernel_restore_summary">Enable automatic restore of the currently installed Kernel</string>
     <string name="pref_prefs_title">Restore PA prefs</string>
     <string name="pref_prefs_summary">Enable automatic restore of current PA Preferences</string>
-    <string name="pref_WipeCache">Wipe Cache</string>
-    <string name="pref_WipeDalvik">Wipe Dalvik Cache</string>
+    <string name="pref_WipeCache_DalvikCache">Wipe Cache/Dalvik Cache</string>
     <string name="pref_backup_setting">Backup Settings</string>
     <string name="pref_backup">Create Backup</string>
     <string name="pref_backup_boot">Backup Boot</string>
@@ -69,6 +66,8 @@
     <string name="pref_BackupDel_summary">Wipes /TWRP/BACKUPS on your sdcard</string>
     <string name="pref_debug">debug</string>
     <string name="pref_debug_update_title">Ignore Update Check</string>
-    <string name="pref_debug_update_summary">Enables Update functionality even if no new Version has been detected</string>
+    <string name="pref_debug_update_summary">Enables update functionality even if no new Version has been detected</string>
 
+    <string name="char_up">↑</string>
+    <string name="char_down">↓</string>
 </resources>

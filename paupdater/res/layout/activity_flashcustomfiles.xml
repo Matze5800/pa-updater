@@ -32,7 +32,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↓"
+                    android:text="@string/char_down"
                     android:visibility="invisible" />
 
                 <Button
@@ -40,7 +40,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↑"
+                    android:text="@string/char_up"
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -62,7 +62,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↓"
+                    android:text="@string/char_down"
                     android:visibility="invisible" />
 
                 <Button
@@ -70,7 +70,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↑"
+                    android:text="@string/char_up"
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -92,7 +92,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↓"
+                    android:text="@string/char_down"
                     android:visibility="invisible" />
 
                 <Button
@@ -100,7 +100,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↑"
+                    android:text="@string/char_up"
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -122,7 +122,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↓"
+                    android:text="@string/char_down"
                     android:visibility="invisible" />
 
                 <Button
@@ -130,7 +130,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↑"
+                    android:text="@string/char_up"
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -152,7 +152,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↓"
+                    android:text="@string/char_down"
                     android:visibility="invisible" />
 
                 <Button
@@ -160,7 +160,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↑"
+                    android:text="@string/char_up"
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -182,7 +182,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↓"
+                    android:text="@string/char_down"
                     android:visibility="invisible" />
 
                 <Button
@@ -190,7 +190,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↑"
+                    android:text="@string/char_up"
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -212,7 +212,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↓"
+                    android:text="@string/char_down"
                     android:visibility="invisible" />
 
                 <Button
@@ -220,7 +220,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↑"
+                    android:text="@string/char_up"
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -242,7 +242,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↓"
+                    android:text="@string/char_down"
                     android:visibility="invisible" />
 
                 <Button
@@ -250,7 +250,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↑"
+                    android:text="@string/char_up"
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -272,7 +272,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↓"
+                    android:text="@string/char_down"
                     android:visibility="invisible" />
 
                 <Button
@@ -280,7 +280,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↑"
+                    android:text="@string/char_up"
                     android:visibility="invisible" />
             </LinearLayout>
 
@@ -302,7 +302,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↓"
+                    android:text="@string/char_down"
                     android:visibility="invisible" />
 
                 <Button
@@ -310,23 +310,17 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="44"
-                    android:text="↑"
+                    android:text="@string/char_up"
                     android:visibility="invisible" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
     <CheckBox
-        android:id="@+id/wipe_cache"
+        android:id="@+id/wipe_caches"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/pref_WipeCache" />
-
-    <CheckBox
-        android:id="@+id/wipe_dalvik_cache"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/pref_WipeDalvik" />
+        android:text="@string/pref_WipeCache_DalvikCache" />
 
     <CheckBox
         android:id="@+id/create_backup"

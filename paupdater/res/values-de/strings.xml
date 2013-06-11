@@ -11,7 +11,6 @@
     <string name="check">Suche nach Updates</string>
     <string name="update">Update starten</string>
     <string name="select_rom_zip">ROM zip auswählen</string>
-    <string name="changelog">Changelog ansehen</string>
     <string name="flash_files">Dateien flashen</string>
     <string name="clear_list">Leere Liste</string>
     <string name="no_files_to_flash">Keine Dateien zum Flashen!</string>
@@ -47,7 +46,7 @@
     <string name="pref_notification">Benachrichtigungseinstellungen</string>
     <string name="pref_updatecheck">Überprüfungsintervall</string>
     <string name="pref_updatecheck_summary">Setzt das Überprüfungsintervall fest</string>
-    <string name="pref_checkDev">Überprüfe dev Ordner</string>
+    <string name="pref_checkDev">Überprüfe alpha/dev Ordner</string>
     <string name="pref_update_setting">Update Einstellungen</string>
     <string name="pref_gapps_title">Gapps flashen</string>
     <string name="pref_gapps_summary">Aktiviert das automatische Flashen von Gapps</string>
@@ -55,8 +54,7 @@
     <string name="pref_kernel_restore_summary">Aktiviert das automatische Wiederherstellen des aktuellen Kernels</string>
     <string name="pref_prefs_title">PA prefs wiederherstellen</string>
     <string name="pref_prefs_summary">Aktiviert das automatische Wiederherstellen der aktuellen PA Preferences</string>
-    <string name="pref_WipeCache">Cache wipen</string>
-    <string name="pref_WipeDalvik">Dalvik Cache wipen</string>
+    <string name="pref_WipeCache_DalvikCache">Cache/Dalvik Cache wipen</string>
     <string name="pref_backup_setting">Backup Einstellungen</string>
     <string name="pref_backup">Erstelle Backup</string>
     <string name="pref_backup_boot">Backup Boot</string>
