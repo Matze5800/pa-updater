@@ -196,7 +196,7 @@ public class UpdateService extends Service {
                 Functions.Notify(context, "Checking Rom MD5...");
                 File rom = new File(Environment.getExternalStorageDirectory() + "/pa_updater", "rom.zip");
                 if (!Functions.checkMD5(rom_md5, rom)) {
-                    Toast.makeText(getApplicationContext(), "ROM MD5 Mismatch!!! Aborting!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.error_md5_rom, Toast.LENGTH_LONG).show();
                     rom.delete();
                     Abort();
                 }
@@ -206,7 +206,7 @@ public class UpdateService extends Service {
                     Functions.Notify(context, "Checking Gapps MD5...");
                     File gapps = new File(Environment.getExternalStorageDirectory() + "/pa_updater", "gapps.zip");
                     if (!Functions.checkMD5(prefs.getString("gappsmd5", ""), gapps)) {
-                        Toast.makeText(getApplicationContext(), "GAPPS MD5 Mismatch!!! Aborting!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.error_md5_gapps, Toast.LENGTH_LONG).show();
                         gapps.delete();
                         Abort();
                     }

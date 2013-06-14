@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PA Updater</string>
+    <string name="action_settings">Impostazioni</string>
+    <string name="CheckGooVersion">Controllo la versione su goo.im</string>
+    <string name="error">Errore!</string>
+    <string name="img_descr_status">Stato corrente</string>
+    <string name="uptodate">Sei aggiornato.</string>
+    <string name="update_available">Aggiornamento disponibile!</string>
+    <string name="check">Ricerca aggiornamenti</string>
+    <string name="update">Inizio aggiornamento</string>
+    <string name="select_rom_zip">Seleziona lo zip della ROM</string>
+    <string name="flash_files">Installa file personalizzati</string>
+    <string name="clear_list">Pulisci lista</string>
+    <string name="no_files_to_flash">Nessun file da installare!</string>
+    <string name="confirm_flash">Per piacere conferma!</string>
+    <string name="damage_hint">Installando il file sbagliato potresti danneggiare il tuo dispositivo, vuoi continuare?
+    </string>
+    <string name="error_setting_up_openrecovery_script">Errore nel preparare l\'OpenRecoveryScript! Per piacere esegui i
+        processi manualmente!
+    </string>
+    <string name="error_goo_down">"Sorry, goo.im seems to be down"</string>
+    <string name="error_md5_rom">"ROM MD5 Mismatch!!! Aborting!"</string>
+    <string name="error_md5_gapps">"GAPPS MD5 Mismatch!!! Aborting!"</string>
+    <string name="update_dialog_title">Iniziare il Download?</string>
+    <string name="update_dialog_use_rom">Sto per usare questa ROM:\n</string>
+    <string name="update_dialog_download_rom">ROM più recente:\n</string>
+    <string name="update_dialog_gapps">Pacchetto applicazioni Google più recente:\n</string>
+    <string name="update_dialog_do_it">Ok</string>
+    <string name="update_dialog_cancel">Cancella</string>
+    <string name="update_dialog_no_wifi">Non sei connesso tramite WiFi!</string>
+    <string name="update_dialog_lot_traffic">Iniziare l\'aggiornamento causerà un elevato traffico dati!\n\nSei sicuro
+        di volerlo iniziare?
+    </string>
+    <string name="update_dialog_yes">Si</string>
+    <string name="update_dialog_no">No</string>
+    <string name="credits">Sviluppato da Simon Matzeder e Parthipan Ramesh.</string>
+    <string name="title_activity_download_req">Richiesta di Download</string>
+    <string name="title_activity_cancel">Cancella</string>
+    <string name="cancel">Vuoi cancellare l\'aggiornamento?</string>
+    <string name="cancel_yes">Si, cancellalo</string>
+    <string name="cancel_no">No, per piacere continua</string>
+    <string name="title_activity_reboot">Riavvio</string>
+    <string name="wait">Per piacere attendi</string>
+    <string name="action_refresh">Aggiorna</string>
+    <string name="action_open">Seleziona lo zip della ROM</string>
+    <string name="action_add">Aggiungi file</string>
+    <string name="action_flash">Inizio processo di installazione</string>
+    <string name="content_edit">Modifica</string>
+    <string name="menu_settings">Impostazioni</string>
+    <string name="title_activity_settings">Impostazioni</string>
+    <string name="pref_notification">Impostazioni di Notifica</string>
+    <string name="pref_updatecheck">Aggiorna la frequenza di controllo</string>
+    <string name="pref_updatecheck_summary">Imposta la frequenza di controllo</string>
+    <string name="pref_checkDev">Controlla la cartella alpha/dev</string>
+    <string name="pref_update_setting">Aggiorna Impostazioni</string>
+    <string name="pref_gapps_title">Installa le applicazioni Google</string>
+    <string name="pref_gapps_summary">Abilita l\'installazione automatica delle applicazioni Google</string>
+    <string name="pref_kernel_restore">Ripristina il Kernel</string>
+    <string name="pref_kernel_restore_summary">Abilita il ripristino automatico dell\'attuale Kernel installato</string>
+    <string name="pref_prefs_title">Ripristina le preferenze PA</string>
+    <string name="pref_prefs_summary">Abilita il ripristino automatico delle attuali Preferenze PA</string>
+    <string name="pref_WipeCache_DalvikCache">Pulisci Cache/Dalvik Cache</string>
+    <string name="pref_backup_setting">Impostazioni di Backup</string>
+    <string name="pref_backup">Crea Backup</string>
+    <string name="pref_backup_boot">Backup del Boot</string>
+    <string name="pref_backup_system">Backup del Sistema</string>
+    <string name="pref_backup_data">Backup dei Dati</string>
+    <string name="pref_backup_compress_title">Abilita Compressione</string>
+    <string name="pref_backup_compress_summary">Riduce la grandezza del backup ma richiede poco tempo in più</string>
+    <string name="pref_backup_md5">Genera MD5sums</string>
+    <string name="pref_BackupDel_title">Elimina i vecchi backup</string>
+    <string name="pref_BackupDel_summary">Pulisce /TWRP/BACKUPS sulla tua sdcard</string>
+    <string name="pref_debug">debug</string>
+    <string name="pref_debug_update_title">Ignora il Controllo degli Aggiornamenti</string>
+    <string name="pref_debug_update_summary">Abilita la funzionalità aggiornamento anche se nessuna nuova Versione è
+        stata trovata
+    </string>
+
+    <string name="char_up">↑</string>
+    <string name="char_down">↓</string>
+</resources>

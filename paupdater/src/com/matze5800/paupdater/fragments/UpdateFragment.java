@@ -106,7 +106,7 @@ public class UpdateFragment extends Fragment {
                     updateButton.setEnabled(false);
                 }
             } else {
-                Toast.makeText(context, "Sorry, goo.im seems to be down!",
+                Toast.makeText(context, R.string.error_goo_down,
                         Toast.LENGTH_LONG).show();
             }
         }
